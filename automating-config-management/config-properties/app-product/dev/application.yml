@@ -1,3 +1,25 @@
 server.port: 10000
 spring:
   application.name: app-product
+
+  h2:
+    console:
+      enabled: true
+      path: /console
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:file:~/customers;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password: sa
+      driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+#metrics
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
